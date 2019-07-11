@@ -40,16 +40,26 @@ set(SOURCES
 	sshtunneloutsrv.cpp
 	sshscpsend.cpp
 	sshsftp.cpp
-	sshfilesystemmodel.cpp
-	sshfilesystemnode.cpp
+#	sshfilesystemmodel.cpp
+#	sshfilesystemnode.cpp
 )
 
 set(HEADERS
+	async_libssh2.h
 	sshclient.h
-	sshinterface.h
-	sshfsinterface.h
-	sshfilesystemmodel.h
-	sshserviceport.h
+	sshchannel.h
+	sshkey.h
+	sshprocess.h
+	sshscpget.h
+	sshscpsend.h
+	sshsftp.h
+	sshtunnelin.h
+	sshtunnelout.h
+	sshtunneloutsrv.h
+#	sshinterface.h
+#	sshfsinterface.h
+#	sshfilesystemmodel.h
+#	sshserviceport.h
 )
 if(BUILD_STATIC)
 	add_library(${PROJECT_NAME} STATIC ${SOURCES})
@@ -72,5 +82,5 @@ install(TARGETS ${PROJECT_NAME} EXPORT ${PROJECT_NAME}Targets
 	PUBLIC_HEADER DESTINATION include/${PROJECT_NAME}
 )
 install(EXPORT ${PROJECT_NAME}Targets
-	DESTINATION lib/cmake
+	DESTINATION lib/cmake/${PROJECT_NAME}
 )
